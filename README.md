@@ -11,6 +11,7 @@ what you hear.
 | Page | Platform | Issue | What it shows |
 | --- | --- | --- | --- |
 | [`android-trait-states`](src/pages/android-trait-states) | Android | [#10999](https://github.com/lynx-family/lynx/issues/10999) | `accessibility-traits` lists and switch/checkbox states are not read |
+| [`android-announce-links-lists`](src/pages/android-announce-links-lists) | Android | (not filed yet) | `accessibilityAnnounce` is silent, `<text>` links can't be opened, `<list>` has no position |
 
 ## Getting Started
 
