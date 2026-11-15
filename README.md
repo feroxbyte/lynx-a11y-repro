@@ -26,15 +26,22 @@ Run the development server:
 pnpm run dev
 ```
 
-Every page is served as `<page>.lynx.bundle`. Open one in LynxExplorer (scan the QR code in the
-terminal, or enter the printed URL), turn on TalkBack (Android) or VoiceOver (iOS), and follow the
-steps in the page's README.
+Open `index.lynx.bundle` in LynxExplorer (scan the QR code in the terminal, or enter the printed
+URL) for a list of every page; tap one to open it. Each page is also served on its own as
+`<page>.lynx.bundle`, which is what its issue links to. Turn on TalkBack (Android) or VoiceOver
+(iOS) and follow the steps in the page's README.
+
+Open pages without `?fullscreen=true`: on Android, Lynx leaves `env(safe-area-inset-top)` at 0,
+so a fullscreen page would sit under the status bar and camera cutout. Every page is wrapped in
+`SafeArea` (`src/shared/SafeArea.tsx`), which applies the insets where Lynx provides them (iOS).
 
 ## Adding a page
 
-1. Create `src/pages/<page>/` with an `index.tsx` that renders the page. It is picked up as
-   `<page>.lynx.bundle` without any config change.
-2. Use the controls in `src/shared/Control.tsx`, or add a new kind there so other pages can
-   reuse it.
-3. Add a `README.md` in the folder (issue link, platform, steps, expected results) and a line to
-   the table above.
+1. Create `src/pages/<page>/` with:
+   - `App.tsx`: the page. Use the controls in `src/shared/Control.tsx`, or add a new kind there
+     so other pages can reuse it.
+   - `index.tsx`: renders `App` on its own. It is built as `<page>.lynx.bundle` without any
+     config change.
+   - `meta.ts`: title, platform, summary and issue number, for the home list.
+   - `README.md`: issue link, platform, steps, expected results.
+2. Add the page to `src/pages.ts` (home list) and to the table above.
