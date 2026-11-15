@@ -5,4 +5,5 @@ export const meta: PageMeta = {
   title: 'Announcements, links and lists',
   platform: 'Android',
   summary: 'TalkBack misses accessibilityAnnounce, cannot open <text> links, and reads no list position',
+  issue: 11001,
 };

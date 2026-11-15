@@ -1,5 +1,6 @@
 # android-announce-links-lists
 
+**Issue:** [lynx-family/lynx#11001](https://github.com/lynx-family/lynx/issues/11001)
 **Platform:** Android (TalkBack)
 
 Three things TalkBack misses on Android:
