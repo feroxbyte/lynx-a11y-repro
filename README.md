@@ -10,7 +10,7 @@ what you hear.
 
 | Page | Platform | Issue | What it shows |
 | --- | --- | --- | --- |
-| [`android-trait-states`](src/pages/android-trait-states) | Android | (not filed yet) | `accessibility-traits` lists and switch/checkbox states are not read |
+| [`android-trait-states`](src/pages/android-trait-states) | Android | [#10999](https://github.com/lynx-family/lynx/issues/10999) | `accessibility-traits` lists and switch/checkbox states are not read |
 
 ## Getting Started
 

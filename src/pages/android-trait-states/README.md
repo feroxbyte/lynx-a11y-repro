@@ -1,6 +1,6 @@
 # android-trait-states
 
-**Issue:** (not filed yet)
+**Issue:** [lynx-family/lynx#10999](https://github.com/lynx-family/lynx/issues/10999)
 **Platform:** Android (iOS reads the same attributes correctly)
 
 On Android, `accessibility-traits` with more than one value (`"button,selected"`) is not read,

@@ -5,4 +5,5 @@ export const meta: PageMeta = {
   title: 'Toggles, switches and checkboxes',
   platform: 'Android',
   summary: 'accessibility-traits lists ("button,selected") and switch/checkbox states are not read',
+  issue: 10999,
 };
