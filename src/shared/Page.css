@@ -11,3 +11,14 @@
   margin-bottom: 20px;
   color: #000000;
 }
+
+.Section {
+  margin-top: 12px;
+}
+
+/* Ends every page. A scroll-view's bottom padding does not extend how far it scrolls, and on
+   Android env(safe-area-inset-bottom) is 0, so without it the last control ends up flush with (or
+   under) the navigation bar. */
+.PageEnd {
+  height: 120px;
+}

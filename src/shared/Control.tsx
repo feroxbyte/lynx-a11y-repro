@@ -1,11 +1,12 @@
-// Controls styled like the real thing (button, toggle button, switch, checkbox) that set their
+// Controls styled like the real thing (button, toggle button, switch, checkbox, tile) that set their
 // accessibility attributes the way an app would, from the same state that drives their look.
 // Under each, a caption shows those attributes and what a screen reader should say, so a tester
 // can compare it with what they hear.
 
 import './Control.css';
 
-export type Kind = 'button' | 'toggle' | 'switch' | 'checkbox';
+// A tile is a plain element, such as a photo, that carries custom accessibility-actions.
+export type Kind = 'button' | 'toggle' | 'switch' | 'checkbox' | 'tile';
 
 export interface Case {
   id: string;
@@ -44,6 +45,8 @@ export function expectedFor(c: Case, on: boolean): string {
       return on ? 'Switch, on' : 'Switch, off';
     case 'checkbox':
       return on ? 'Checkbox, checked' : 'Checkbox, not checked';
+    case 'tile':
+      return '';
   }
 }
 
@@ -81,6 +84,12 @@ function Visual({ c, on }: { c: Case; on: boolean }) {
           <text accessibility-element={false} className="LineLabel BoxLabel">{c.label}</text>
         </view>
       );
+    case 'tile':
+      return (
+        <view className="Tile">
+          <text accessibility-element={false} className="TileText">{c.label}</text>
+        </view>
+      );
   }
 }
 
@@ -95,7 +104,7 @@ export function Control({
   on: boolean;
   onTap?: () => void;
   // Override what the element sets, for cases that change the attributes themselves.
-  attributes?: Record<string, string | undefined>;
+  attributes?: Record<string, string | string[] | undefined>;
   expected?: string;
 }) {
   const names = Object.keys(attributes).filter((name) => attributes[name] !== undefined);
@@ -115,11 +124,19 @@ export function Control({
       </view>
       <text className="Caption" accessibility-element={false}>
         {names.length
-          ? names.map((name) => `${name}="${attributes[name]}"`).join('\n')
+          ? names
+              .map((name) => {
+                const value = attributes[name];
+                return Array.isArray(value)
+                  ? `${name}={${JSON.stringify(value)}}`
+                  : `${name}="${value}"`;
+              })
+              .join('\n')
           : '(no accessibility attributes)'}
       </text>
       <text className="Caption CaptionExpected" accessibility-element={false}>
-        Screen reader should say: {c.label}, {expected}
+        Screen reader should say: {c.label}
+        {expected ? `, ${expected}` : ''}
       </text>
     </>
   );

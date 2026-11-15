@@ -122,3 +122,19 @@
 .BoxLabel {
   margin-left: 12px;
 }
+
+/* Tile */
+.Tile {
+  width: 96px;
+  height: 72px;
+  border-radius: 8px;
+  background-color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.TileText {
+  font-size: 14px;
+  color: #374151;
+}
